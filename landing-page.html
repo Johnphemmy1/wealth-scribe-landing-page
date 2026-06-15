@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nigerian Investor's Blueprint — Wealth Scribe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #0D2B1D;
+            --emerald: #1A5C3A;
+            --gold: #F5A623;
+            --cream: #FFFDF7;
+            --white: #FFFFFF;
+            --text: #111827;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.2;
+        }
+
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 100;
+            background: rgba(13, 43, 29, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover { opacity: 0.88; }
+
+        /* HERO */
+        .hero {
+            background: var(--forest);
+            padding: 120px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(245,166,35,0.15);
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(245,166,35,0.3);
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 62px);
+            color: var(--white);
+            font-weight: 700;
+            max-width: 780px;
+            margin: 0 auto 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span { color: var(--gold); }
+
+        .hero-sub {
+            font-size: clamp(16px, 2.5vw, 19px);
+            color: rgba(255,255,255,0.68);
+            max-width: 540px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(245,166,35,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245,166,35,0.4);
+        }
+
+        .hero-price-note {
+            color: rgba(255,255,255,0.45);
+            font-size: 14px;
+        }
+
+        /* TRUST BAR */
+        .trust-bar {
+            background: var(--emerald);
+            padding: 20px 24px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* COMPARISON — SIGNATURE ELEMENT */
+        .comparison {
+            background: var(--white);
+            padding: 80px 24px;
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--emerald);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(26px, 4vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 520px;
+            margin-bottom: 48px;
+        }
+
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .comp-card {
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .comp-card.bad {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+        }
+
+        .comp-card.good {
+            background: var(--forest);
+            color: white;
+        }
+
+        .comp-card-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .comp-card.bad .comp-card-label { color: #EF4444; }
+        .comp-card.good .comp-card-label { color: var(--gold); }
+
+        .comp-card-scenario {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .comp-card.bad .comp-card-scenario { color: var(--text); }
+        .comp-card.good .comp-card-scenario { color: rgba(255,255,255,0.8); }
+
+        .comp-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 12px 0;
+            border-bottom: 1px solid;
+        }
+
+        .comp-card.bad .comp-row { border-color: #FECACA; }
+        .comp-card.good .comp-row { border-color: rgba(255,255,255,0.1); }
+        .comp-row:last-of-type { border-bottom: none; }
+
+        .comp-period { font-size: 13px; color: var(--text-muted); }
+        .comp-card.good .comp-period { color: rgba(255,255,255,0.55); }
+
+        .comp-amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .comp-card.bad .comp-amount { color: #EF4444; }
+        .comp-card.good .comp-amount { color: var(--gold); }
+
+        .comp-note {
+            margin-top: 18px;
+            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+
+        .comp-card.bad .comp-note { background: #FEE2E2; color: #991B1B; }
+        .comp-card.good .comp-note { background: rgba(245,166,35,0.12); color: var(--gold); }
+
+        /* PROBLEM */
+        .problem {
+            background: var(--cream);
+            padding: 80px 24px;
+        }
+
+        .problem-text {
+            font-size: clamp(22px, 3.5vw, 34px);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            max-width: 700px;
+            line-height: 1.45;
+            letter-spacing: -0.5px;
+        }
+
+        .problem-text .highlight { color: var(--emerald); }
+
+        .problem-points {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .problem-point {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .problem-point-icon { font-size: 24px; margin-bottom: 12px; }
+
+        .problem-point h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .problem-point p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* CHAPTERS */
+        .chapters {
+            background: var(--white);
+            padding: 80px 24px;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+            margin-top: 48px;
+        }
+
+        .chapter-card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--emerald);
+            transform: translateY(-2px);
+        }
+
+        .chapter-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--emerald);
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .chapter-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .chapter-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* FOR WHO */
+        .for-who {
+            background: var(--forest);
+            padding: 80px 24px;
+        }
+
+        .for-who .section-label { color: var(--gold); }
+        .for-who .section-title { color: white; }
+
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 40px;
+        }
+
+        .for-who-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .for-who-check {
+            width: 20px; height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 10px;
+            color: var(--forest);
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .for-who-item p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.78);
+            line-height: 1.55;
+        }
+
+        /* QUOTE */
+        .quote-section {
+            background: var(--emerald);
+            padding: 64px 24px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 600;
+            color: white;
+            max-width: 680px;
+            margin: 0 auto 20px;
+            line-height: 1.45;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* PRICING */
+        .pricing {
+            background: var(--cream);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .price-card {
+            max-width: 460px;
+            margin: 48px auto 0;
+            background: white;
+            border: 2px solid var(--emerald);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(13,43,29,0.1);
+        }
+
+        .price-badge {
+            background: var(--emerald);
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .price-amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 54px;
+            font-weight: 700;
+            color: var(--forest);
+            letter-spacing: -2px;
+            margin-bottom: 4px;
+        }
+
+        .price-note {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .price-features li:last-child { border-bottom: none; }
+
+        .price-features .check {
+            color: var(--emerald);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .btn-full {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--emerald);
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            padding: 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-full:hover {
+            background: var(--forest);
+            transform: translateY(-1px);
+        }
+
+        .guarantee {
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--forest);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.38);
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .comparison-cards { grid-template-columns: 1fr; }
+            .trust-bar { gap: 20px; }
+            .hero { padding: 100px 20px 60px; }
+            .btn-primary { font-size: 16px; padding: 16px 32px; }
+            .price-card { padding: 28px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">Wealth Scribe</div>
+    <a href="https://paystack.shop/pay/sk3it1jet1" class="nav-cta">Get It — ₦5,000</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-tag">The Nigerian Investor's Blueprint</div>
+    <h1>The money rules they never taught you <span>in school</span></h1>
+    <p class="hero-sub">A practical, no-jargon guide to building real wealth in Nigeria — from scratch, in naira, with everything that comes with that.</p>
+    <div class="hero-cta-group">
+        <a href="https://paystack.shop/pay/sk3it1jet1" class="btn-primary">Get the Blueprint — ₦5,000</a>
+        <p class="hero-price-note">Instant PDF delivery &nbsp;•&nbsp; Secure payment via Paystack</p>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="trust-item">📖 &nbsp;10 Chapters</div>
+    <div class="trust-item">🇳🇬 &nbsp;Nigeria-Specific</div>
+    <div class="trust-item">⚡ &nbsp;Instant Download</div>
+    <div class="trust-item">✅ &nbsp;All Income Levels</div>
+</div>
+
+<!-- COMPARISON — SIGNATURE ELEMENT -->
+<section class="comparison">
+    <div class="container">
+        <p class="section-label">The Real Cost of Waiting</p>
+        <h2 class="section-title">₦100,000 in a bank vs ₦100,000 invested</h2>
+        <p class="section-sub">These are not estimates. These are the actual numbers — and the gap grows every single year you delay.</p>
+
+        <div class="comparison-cards">
+            <div class="comp-card bad">
+                <p class="comp-card-label">❌ Savings Account — 4% return</p>
+                <p class="comp-card-scenario">Your ₦100,000 sitting in a regular bank account</p>
+                <div class="comp-row">
+                    <span class="comp-period">After 5 years</span>
+                    <span class="comp-amount">₦121,665</span>
+                </div>
+                <div class="comp-row">
+                    <span class="comp-period">After 10 years</span>
+                    <span class="comp-amount">₦148,024</span>
+                </div>
+                <div class="comp-row">
+                    <span class="comp-period">After 20 years</span>
+                    <span class="comp-amount">₦219,112</span>
+                </div>
+                <div class="comp-note">While inflation runs at 22%+, your savings account is quietly destroying your purchasing power every year.</div>
+            </div>
+
+            <div class="comp-card good">
+                <p class="comp-card-label">✓ Invested at 15% annual return</p>
+                <p class="comp-card-scenario">Your ₦100,000 working for you in the right vehicle</p>
+                <div class="comp-row">
+                    <span class="comp-period">After 5 years</span>
+                    <span class="comp-amount">₦201,136</span>
+                </div>
+                <div class="comp-row">
+                    <span class="comp-period">After 10 years</span>
+                    <span class="comp-amount">₦404,556</span>
+                </div>
+                <div class="comp-row">
+                    <span class="comp-period">After 20 years</span>
+                    <span class="comp-amount">₦1,636,654</span>
+                </div>
+                <div class="comp-note">15% annual returns are available in Nigeria today. The Blueprint shows you exactly where and how.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+    <div class="container">
+        <p class="problem-text">
+            Nobody taught us this. Your parents worked hard, kept the lights on, paid school fees. But a real conversation about <span class="highlight">building wealth</span> — making money work while you sleep? <span class="highlight">That probably never happened.</span>
+        </p>
+
+        <div class="problem-points">
+            <div class="problem-point">
+                <div class="problem-point-icon">📉</div>
+                <h4>Saving is not enough</h4>
+                <p>With inflation above 22%, a savings account earning 4% is silently destroying your wealth every single year.</p>
+            </div>
+            <div class="problem-point">
+                <div class="problem-point-icon">🤷🏾</div>
+                <h4>Nobody showed you how</h4>
+                <p>Investment knowledge is not taught in Nigerian schools or homes. Most people arrive at adulthood with no framework at all.</p>
+            </div>
+            <div class="problem-point">
+                <div class="problem-point-icon">⏰</div>
+                <h4>Every year of waiting is expensive</h4>
+                <p>Compounding is ruthless. The person who starts at 25 will have dramatically more than the person who starts at 35 — even earning less.</p>
+            </div>
+            <div class="problem-point">
+                <div class="problem-point-icon">🎭</div>
+                <h4>Generic advice doesn't fit Nigeria</h4>
+                <p>Western finance advice ignores the naira, Nigerian inflation, extended family obligations, and the real platforms available to you here.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CHAPTERS -->
+<section class="chapters">
+    <div class="container">
+        <p class="section-label">What's Inside</p>
+        <h2 class="section-title">10 chapters. Everything you actually need.</h2>
+
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 01</p>
+                <h4>Wealth Is Not What You Earn — It's What You Keep</h4>
+                <p>Why the person earning ₦800k/month can be poorer than the teacher earning ₦120k — and what the wealthy actually do differently.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 02</p>
+                <h4>Getting Your Financial House in Order</h4>
+                <p>Emergency funds, a budgeting framework built for Nigerian realities (including family obligations), and which debts to kill first.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 03</p>
+                <h4>Understanding How Wealth Actually Grows</h4>
+                <p>Compounding, naira cost averaging, and why showing up consistently beats trying to time the market every time.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 04</p>
+                <h4>Your Investment Options in Nigeria</h4>
+                <p>A complete, honest breakdown of money market funds, T-Bills, FGN Bonds, Nigerian stocks, US ETFs, real estate, and mutual funds.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 05</p>
+                <h4>The Psychology of Your Financial Decisions</h4>
+                <p>FOMO, panic selling, waiting for certainty — the emotional traps that cost Nigerian investors the most, and exactly how to avoid them.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 06</p>
+                <h4>The Wisdom of Babylon, Applied to Nigeria</h4>
+                <p>Timeless wealth principles from the world's oldest financial text — filtered through the reality of earning in naira and building here.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 07</p>
+                <h4>Navigating Nigerian Economic Realities</h4>
+                <p>How to handle naira devaluation, spot investment scams before they take your money, and use your pension as an underused wealth tool.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 08</p>
+                <h4>Investing at Every Income Level</h4>
+                <p>Whether you earn ₦50,000 or ₦500,000+, here is a concrete plan built for your income level right now.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 09</p>
+                <h4>Building Long-Term Wealth</h4>
+                <p>Reinvesting returns, fighting lifestyle inflation, and building multiple income streams that work without your active effort.</p>
+            </div>
+            <div class="chapter-card">
+                <p class="chapter-num">CHAPTER 10</p>
+                <h4>Your 30-Day Action Plan</h4>
+                <p>Week-by-week actions — from knowing your numbers to making your first investment. Clear steps, no excuses, no more waiting.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="for-who">
+    <div class="container">
+        <p class="section-label">Who This Is For</p>
+        <h2 class="section-title">Built for real Nigerians, not finance textbooks</h2>
+
+        <div class="for-who-grid">
+            <div class="for-who-item">
+                <div class="for-who-check">✓</div>
+                <p>Young adults earning their first serious income and wanting to do something smart with it</p>
+            </div>
+            <div class="for-who-item">
+                <div class="for-who-check">✓</div>
+                <p>People who have been "going to start investing" for months and just need a clear, honest starting point</p>
+            </div>
+            <div class="for-who-item">
+                <div class="for-who-check">✓</div>
+                <p>Anyone who has lost money to scams and wants to know what legitimate investing actually looks like</p>
+            </div>
+            <div class="for-who-item">
+                <div class="for-who-check">✓</div>
+                <p>Nigerians earning between ₦50,000 and ₦500,000+ who want a realistic plan for their income level</p>
+            </div>
+            <div class="for-who-item">
+                <div class="for-who-check">✓</div>
+                <p>People balancing investment goals with real family obligations and social pressures</p>
+            </div>
+            <div class="for-who-item">
+                <div class="for-who-check">✓</div>
+                <p>Anyone tired of generic Western advice that doesn't account for naira, inflation, or Nigerian realities</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+    <div class="container">
+        <p class="quote-text">"The people building real wealth are not smarter than you. They just learned — earlier — a few things about how money actually behaves. And then they acted on it."</p>
+        <p class="quote-source">— The Nigerian Investor's Blueprint</p>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+    <div class="container">
+        <p class="section-label">Get the Blueprint</p>
+        <h2 class="section-title">One guide. Everything you need to start.</h2>
+
+        <div class="price-card">
+            <span class="price-badge">Instant Access</span>
+            <div class="price-amount">₦5,000</div>
+            <p class="price-note">One-time payment &nbsp;•&nbsp; PDF delivered to your email immediately</p>
+
+            <ul class="price-features">
+                <li><span class="check">✓</span> Full 10-chapter PDF guide — instantly downloadable</li>
+                <li><span class="check">✓</span> Every Nigerian investment option explained honestly</li>
+                <li><span class="check">✓</span> Budgeting framework built for Nigerian life</li>
+                <li><span class="check">✓</span> Investing plans for every income level (₦50k–₦500k+)</li>
+                <li><span class="check">✓</span> Scam detection guide — how to protect your money</li>
+                <li><span class="check">✓</span> 30-day action plan to get started this week</li>
+                <li><span class="check">✓</span> Complete list of verified Nigerian investment platforms</li>
+            </ul>
+
+            <a href="https://paystack.shop/pay/sk3it1jet1" class="btn-full">Pay with Paystack — ₦5,000</a>
+            <p class="guarantee">🔒 Accepts debit cards, bank transfer & USSD</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="logo">Wealth Scribe</div>
+    <p>@wealth_scribe &nbsp;•&nbsp; Helping Nigerians build wealth, one principle at a time.</p>
+</footer>
+
+</body>
+</html>
