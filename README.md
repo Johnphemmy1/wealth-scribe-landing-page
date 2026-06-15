@@ -1,0 +1,1 @@
+# wealth-scribe-landing-page
